@@ -1,0 +1,19 @@
+{
+  "name": "dbb-bot-scripts",
+  "version": "0.0.1",
+  "description": "Bot scripts for Discord Bot Builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc && node /dist/index.js",
+    "build": "tsc"
+  },
+  "author": "Allison",
+  "license": "MIT",
+  "devDependencies": {
+    "discord.js": "^14.11.0",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "@types/node": "^20.3.1"
+  }
+}
