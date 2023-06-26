@@ -33,7 +33,7 @@ jobs:
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: https://github.com/Allybe/DBB-BotScripts
           asset_path: result.zip
           asset_name: Scripts
           asset_content_type: application/zip
