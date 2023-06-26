@@ -1,9 +1,13 @@
-import { AllyClient } from "./AllyClient";
-import { Message } from "discord.js";
+import { CommandInteraction, ChatInputApplicationCommandData, ButtonInteraction, ModalSubmitInteraction } from "discord.js";
+import { SlashCommandBuilder, SlashCommandSubcommandsOnlyBuilder } from "@discordjs/builders";
+import { AllyClient } from "./AllyClient.js";
 
-export interface ChatCommand {
+export interface Command extends ChatInputApplicationCommandData {
     name: string;
     description: string;
     args?: Map<string, boolean>;
-    run: (client: AllyClient, message: Message, args: Array<string>) => void;
+    run: (client: AllyClient, interaction: CommandInteraction) => void;
+    followup?: (client: AllyClient, interaction: ButtonInteraction) => void;
+    modalResponse?: (client: AllyClient, interaction: ModalSubmitInteraction) => void;
+    command: SlashCommandBuilder | SlashCommandSubcommandsOnlyBuilder;
 }
