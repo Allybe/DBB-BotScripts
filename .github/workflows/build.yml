@@ -24,8 +24,8 @@ jobs:
       - name: Start build
         run: npm run build
 
-      - name: Upload binaries to release
-        uses: actions/upload-release-asset@v1
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v2.6.1
         with:
           upload_url: ${{ secrets.GITHUB_TOKEN }}
           file: ./dist
