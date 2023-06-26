@@ -33,7 +33,6 @@ jobs:
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: result.zip
           asset_name: Scripts
