@@ -5,6 +5,7 @@ import { AllyClient } from "./AllyClient.js";
 export interface Command extends ChatInputApplicationCommandData {
     name: string;
     description: string;
+    moduleName: string;
     args?: Map<string, boolean>;
     run: (client: AllyClient, interaction: CommandInteraction) => void;
     followup?: (client: AllyClient, interaction: ButtonInteraction) => void;
