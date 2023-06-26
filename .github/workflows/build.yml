@@ -30,3 +30,4 @@ jobs:
           upload_url: ${{ secrets.GITHUB_TOKEN }}
           asset_path: ./dist
           asset_name: Scripts
+          asset_content_type: application/zip
