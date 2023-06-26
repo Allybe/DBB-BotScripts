@@ -24,10 +24,16 @@ jobs:
       - name: Start build
         run: npm run build
 
+      - name: Zip builds
+        uses: vimtor/action-zip@v1
+        with:
+          files: dist/
+          dest: result.zip
+
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ secrets.GITHUB_TOKEN }}
-          asset_path: dist/
+          asset_path: result.zip
           asset_name: Scripts
           asset_content_type: application/zip
