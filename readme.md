@@ -2,13 +2,13 @@ Commands to add
 
 ## Moderation
 
- 1. Mutes
+ 1. Mutes 
 
  2. Temp Mutes
 
  3. Unmute
 
- 4. Ban
+ 4. Ban (Done)
 
  5. Unban
 
