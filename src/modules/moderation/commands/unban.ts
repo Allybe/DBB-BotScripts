@@ -1,5 +1,6 @@
 import {
   CommandInteraction,
+  Embed,
   EmbedBuilder,
   PermissionFlagsBits,
   SlashCommandBuilder,
@@ -14,17 +15,27 @@ export const SlashCommand: Command = {
   run: (client: AllyClient, interaction: CommandInteraction) => {
     var user = interaction.options.getUser("user");
     var guild = interaction.guild;
+    var embed = new EmbedBuilder();
 
-    guild.members.unban(user).then((member) => {
-      var embed = new EmbedBuilder()
+    guild.bans.fetch().then((banCollection) => {
+      if (!banCollection.has(user.id)) {
+        embed
+          .setTitle("Member not banned")
+          .setDescription(`${user.username} is not banned from ${guild.name}`)
+          .setFooter({
+            text: "This Discord bot was made with Discord Bot Builder",
+          });
+
+        return interaction.reply({ embeds: [embed] });
+      }
+
+      banCollection.delete(user.id);
+      embed
         .setTitle("Member unbanned")
-        .setDescription(
-          `${member.username} was unbanned from ${interaction.guild.name}`
-        )
+        .setDescription(`${user.username} was unbanned from ${guild.name}`)
         .setFooter({
           text: "This Discord bot was made with Discord Bot Builder",
         });
-
       interaction.reply({ embeds: [embed] });
     });
   },

@@ -25,6 +25,12 @@ export const SlashCommand: Command = {
         .setDescription("User that'll be muted")
         .setRequired(true);
     })
+    .addIntegerOption((option) => {
+      return option
+        .setName("time")
+        .setDescription("Time in minutes")
+        .setRequired(true);
+    })
     .setDefaultMemberPermissions(
       PermissionFlagsBits.ModerateMembers
     ) as SlashCommandBuilder,
