@@ -56,7 +56,7 @@ jobs:
           prerelease: false
 
       - name: Finding Path
-        run: echo ls
+        run: ls
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
