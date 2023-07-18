@@ -51,7 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           tag_name: ${{ steps.vars.outputs.tag_name }}
-          release_name: Release ${{ steps.vars.outputs.tag_name }}
+          release_name: Scipts Release
           draft: false
           prerelease: false
 
