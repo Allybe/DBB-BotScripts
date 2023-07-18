@@ -50,8 +50,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
-          tag_name: ${{ steps.vars.outputs.tag_name }}
-          release_name: Release ${{ steps.vars.outputs.tag_name }}
+          tag_name: Release
+          release_name: Release
           draft: false
           prerelease: false
 
