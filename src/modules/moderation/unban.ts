@@ -5,8 +5,8 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
-import { AllyClient } from "../../../interfaces/AllyClient";
-import { Command } from "../../../interfaces/Commands";
+import { AllyClient } from "../../interfaces/AllyClient";
+import { Command } from "../../interfaces/Commands";
 
 export const SlashCommand: Command = {
   name: "unban",
@@ -21,21 +21,21 @@ export const SlashCommand: Command = {
       if (!banCollection.has(user.id)) {
         embed
           .setTitle("Member not banned")
-          .setDescription(`${user.username} is not banned from ${guild.name}`)
+          .setDescription(`${user} is not banned from ${guild.name}`)
           .setFooter({
             text: "This Discord bot was made with Discord Bot Builder",
-          });
+          })
+            .setColor("Red");
 
         return interaction.reply({ embeds: [embed] });
       }
-
-      banCollection.delete(user.id);
+      guild.members.unban(user);
       embed
         .setTitle("Member unbanned")
-        .setDescription(`${user.username} was unbanned from ${guild.name}`)
+        .setDescription(`${user} was unbanned from ${guild.name}`)
         .setFooter({
           text: "This Discord bot was made with Discord Bot Builder",
-        });
+        }).setColor("Green");
       interaction.reply({ embeds: [embed] });
     });
   },
