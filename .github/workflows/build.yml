@@ -56,10 +56,10 @@ jobs:
           prerelease: false
 
       - name: Zip distribution
-        run: zip -r ./distribution.zip ./DBB-BotScripts
+        run: zip -r ./distribution.zip ./DBB-BotScripts/
 
       - name: Debugging
-        run: ls
+        run: ls .
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
