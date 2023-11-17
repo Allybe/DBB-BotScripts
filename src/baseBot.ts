@@ -27,7 +27,7 @@ fs.readdir(
     var folders = items.filter((files) => files.split(".").pop() != "js");
 
     // Load all commands from the base commands folder
-    await baseFiles.forEach((fileName) => {
+     baseFiles.forEach((fileName) => {
       import(`./commands/${fileName}`).then((properties) => {
         let commandName = properties.SlashCommand.name.toLowerCase();
 
@@ -38,7 +38,7 @@ fs.readdir(
     });
 
     // Load all commands from the subfolders
-    await folders.forEach((folderName) => {
+     folders.forEach((folderName) => {
       fs.readdir(
         `./dist/commands/${folderName}`,
         async (err: NodeJS.ErrnoException | null, subfolderItems: string[]) => {
@@ -47,7 +47,7 @@ fs.readdir(
             (files) => files.split(".").pop() === "js"
           );
 
-          await Files.forEach((fileName) => {
+          Files.forEach((fileName) => {
             import(`./commands/${folderName}/${fileName}`).then(
               (properties) => {
                 let commandName: String =

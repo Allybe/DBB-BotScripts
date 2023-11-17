@@ -1,6 +1,6 @@
 import { CommandInteraction, ApplicationCommandType, SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageActionRowComponentBuilder, InteractionType } from "discord.js";
-import { Command } from "../../interfaces/Commands";
-import { AllyClient } from "../../interfaces/AllyClient";
+import { Command } from "../../../interfaces/Commands";
+import { AllyClient } from "../../../interfaces/AllyClient";
 
 export const SlashCommand: Command = {
     name: "help",

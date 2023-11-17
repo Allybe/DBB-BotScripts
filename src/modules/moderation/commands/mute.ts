@@ -4,8 +4,8 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
-import { AllyClient } from "../../interfaces/AllyClient";
-import { Command } from "../../interfaces/Commands";
+import { AllyClient } from "../../../interfaces/AllyClient";
+import { Command } from "../../../interfaces/Commands";
 const MIN_IN_MS = 60000;
 const MAX_TIME = 35791;
 

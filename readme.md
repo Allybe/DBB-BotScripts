@@ -1,49 +1,48 @@
-Commands to add
+# Commands to add
 
 ## Moderation
+-[x] Mutes
 
- 1. Mutes 
+-[x] Temp Mutes
 
- 2. Temp Mutes
+-[x] Unmute
 
- 3. Unmute
+-[x] Ban (Done)
 
- 4. Ban (Done)
+-[x] Unban
 
- 5. Unban
+-[ ] Warns
 
- 6. Warns
+-[ ] Lock channel
 
- 7. Lock channel
+-[ ] Unlock channel
 
- 8. Unlock channel
-
- 9. Help command
+-[ ] Help command
 
  ## Admin 
 
- 1. Welcome messages
+-[ ] Welcome messages
 
- 2. Ticket System
+-[ ] Ticket System
 
- 3. Verification System
+-[ ] Verification System
 
- 4. Polls
+-[ ] Polls
 
- 5. Giveaways
+-[ ] Giveaways
 
  ## Music
 
- 1. Play song
+-[ ] Play song
 
- 2. View Queue
+-[ ] View Queue
 
- 3. Skip current song
+-[ ] Skip current song
 
- 4. Shuffle
+-[ ] Shuffle
 
- 5. Clear Queue
+-[ ] Clear Queue
 
- 6. Removed
+-[ ] Remove
 
- ## Game bot?? 
+ #### Game bot?? 

@@ -5,8 +5,8 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
-import { AllyClient } from "../../interfaces/AllyClient";
-import { Command } from "../../interfaces/Commands";
+import { AllyClient } from "../../../interfaces/AllyClient";
+import { Command } from "../../../interfaces/Commands";
 
 export const SlashCommand: Command = {
   name: "unban",
