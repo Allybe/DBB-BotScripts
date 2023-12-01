@@ -16,9 +16,9 @@ export const SlashCommand: Command = {
   run: (client: AllyClient, interaction: CommandInteraction) => {
     const embed = new EmbedBuilder();
 
-    var mentionedUser = interaction.options.getUser("user");
-    var time = interaction.options.get("time", true).value as number;
-    var guild = interaction.guild;
+    const mentionedUser = interaction.options.getUser("user");
+    const time = interaction.options.get("time", true).value as number;
+    const guild = interaction.guild;
 
     if (time >= MAX_TIME) {
       embed

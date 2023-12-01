@@ -12,46 +12,46 @@ It's about the same for listeners, just add the Javascript file into a ``listene
 ## Commands to add
 
 ### Moderation
--[x] Mutes
+- [x] Mutes
 
--[x] Temp Mutes
+- [x] Temp Mutes
 
--[x] Unmute
+- [x] Unmute
 
--[x] Ban (Done)
+- [x] Ban (Done)
 
--[x] Unban
+- [x] Unban
 
--[ ] Warns
+- [ ] Warns
 
--[ ] Lock channel
+- [ ] Lock channel
 
--[ ] Unlock channel
+- [ ] Unlock channel
 
--[ ] Help command
+- [ ] Help command
 
  ### Admin 
 
--[x] Welcome messages
+- [x] Welcome messages
 
--[ ] Ticket System
+- [ ] Ticket System
 
--[ ] Verification System
+- [ ] Verification System
 
--[ ] Polls
+- [ ] Polls
 
--[ ] Giveaways
+- [ ] Giveaways
 
 ### Music
 
--[ ] Play song
+- [ ] Play song
 
--[ ] View Queue
+- [ ] View Queue
 
--[ ] Skip current song
+- [ ] Skip current song
 
--[ ] Shuffle
+- [ ] Shuffle
 
--[ ] Clear Queue
+- [ ] Clear Queue
 
--[ ] Remove
+- [ ] Remove song

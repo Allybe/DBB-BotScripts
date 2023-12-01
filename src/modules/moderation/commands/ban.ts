@@ -44,6 +44,7 @@ export const SlashCommand: Command = {
           option
               .setName('reason')
               .setDescription('Ban reason')
+              .setRequired(true)
       )
     .setDefaultMemberPermissions(
       PermissionFlagsBits.BanMembers
