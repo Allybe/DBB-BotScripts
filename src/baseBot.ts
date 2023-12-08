@@ -11,6 +11,7 @@ import * as fs from "fs";
 import { Sequelize } from "sequelize";
 import {Listeners} from "./interfaces/Listeners";
 import path from "path";
+import {errorHandler} from "./utility/ErrorHandling";
 
 const client = new AllyClient({
   intents: config.intents as GatewayIntentBits[],
@@ -79,6 +80,13 @@ client.on("interactionCreate", (interaction: Interaction) => {
   if (buttonFollowUp) buttonFollowUp.followup(client, interaction);
 });
 
+process.on("uncaughtException", (error) => {
+    console.error(error);
+
+    if (!errorHandler.isTrustedError(error)) {
+        process.exit(1);
+    }
+});
 
 client.login(config.token);
 
