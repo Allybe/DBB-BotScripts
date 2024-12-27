@@ -1,10 +1,11 @@
 # Node 
 node_modules/
 package-lock.json
+.env
 
 # Typescript Output
 dist/
 
 # IDEs
-.idea
-.vscode
+.idea/
+.vscode/

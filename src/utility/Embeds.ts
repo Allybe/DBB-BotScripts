@@ -5,6 +5,8 @@ export class Embeds extends EmbedBuilder {
         super();
 
         this
-            .setFooter({text: "This Discord bot was made with Discord Bot Builder"}).setColor("Green");
+            .setFooter({
+                text: "This Discord bot was made with Discord Bot Builder",
+            }).setColor("Green");
     }
 }

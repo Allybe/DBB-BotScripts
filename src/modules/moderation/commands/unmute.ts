@@ -1,18 +1,18 @@
 import {
   CommandInteraction,
   PermissionFlagsBits,
-  SlashCommandBuilder,
-    EmbedBuilder
+  SlashCommandBuilder
 } from "discord.js";
 import { AllyClient } from "../../../interfaces/AllyClient";
 import { Command } from "../../../interfaces/Commands";
+import {Embeds} from "../../../utility/Embeds";
 
 export const SlashCommand: Command = {
   name: "unmute",
   description: "Unmute server members",
   moduleName: "Moderation",
   run: (client: AllyClient, interaction: CommandInteraction) => {
-    let embed = new EmbedBuilder();
+    let embed = new Embeds();
 
     let user = interaction.options.get("user").user;
     let guild = interaction.guild;
@@ -21,8 +21,7 @@ export const SlashCommand: Command = {
       fetchedUser.timeout(null);
       embed
           .setTitle("User unmuted")
-          .setDescription(`${fetchedUser.user} was unmuted`)
-          .setFooter({text: "This Discord bot was made with Discord Bot Builder"}).setColor("Green");
+          .setDescription(`${fetchedUser.user} was unmuted`);
 
       interaction.reply({embeds: [embed] });
     });

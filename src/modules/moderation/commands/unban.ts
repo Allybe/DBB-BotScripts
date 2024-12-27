@@ -1,12 +1,11 @@
 import {
   CommandInteraction,
-  Embed,
-  EmbedBuilder,
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
 import { AllyClient } from "../../../interfaces/AllyClient";
 import { Command } from "../../../interfaces/Commands";
+import {Embeds} from "../../../utility/Embeds";
 
 export const SlashCommand: Command = {
   name: "unban",
@@ -15,27 +14,20 @@ export const SlashCommand: Command = {
   run: (client: AllyClient, interaction: CommandInteraction) => {
     let user = interaction.options.get("user").user;
     let guild = interaction.guild;
-    let embed = new EmbedBuilder();
+    let embed = new Embeds();
 
     guild.bans.fetch().then((banCollection) => {
       if (!banCollection.has(user.id)) {
         embed
           .setTitle("Member not banned")
-          .setDescription(`${user} is not banned from ${guild.name}`)
-          .setFooter({
-            text: "This Discord bot was made with Discord Bot Builder",
-          })
-            .setColor("Red");
+          .setDescription(`${user} is not banned from ${guild.name}`);
 
         return interaction.reply({ embeds: [embed] });
       }
       guild.members.unban(user);
       embed
         .setTitle("Member unbanned")
-        .setDescription(`${user} was unbanned from ${guild.name}`)
-        .setFooter({
-          text: "This Discord bot was made with Discord Bot Builder",
-        }).setColor("Green");
+        .setDescription(`${user} was unbanned from ${guild.name}`);
       interaction.reply({ embeds: [embed] });
     });
   },

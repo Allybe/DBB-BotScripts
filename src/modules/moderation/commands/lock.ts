@@ -1,21 +1,23 @@
 import {
-    CommandInteraction,
+    CommandInteraction, CommandInteractionOption, GuildBasedChannel,
     PermissionFlagsBits,
     SlashCommandBuilder,
 } from "discord.js";
 import {AllyClient} from "../../../interfaces/AllyClient";
 import {Command} from "../../../interfaces/Commands";
+import {Channel} from "node:diagnostics_channel";
 
 export const SlashCommand: Command = {
     name: "lock",
-    description: "Locks a channel to all users",
+    description: "Places a channel on lockdown",
     moduleName: "Moderation",
     run: (client: AllyClient, interaction: CommandInteraction) => {
-
-    },
+        let channel = interaction.options.get("Channel").channel;
+        interaction.reply("test");
+        },
     command: new SlashCommandBuilder()
         .setName("lock")
-        .setDescription("Locks a channel to all users")
+        .setDescription("Places a channel on lockdown")
         .addChannelOption((option) => {
             return option
                 .setName("Channel")

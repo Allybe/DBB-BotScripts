@@ -1,6 +1,15 @@
-import { CommandInteraction, ApplicationCommandType, SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageActionRowComponentBuilder, InteractionType } from "discord.js";
+import {
+    CommandInteraction,
+    ApplicationCommandType,
+    SlashCommandBuilder,
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    MessageActionRowComponentBuilder
+} from "discord.js";
 import { Command } from "../../../interfaces/Commands";
 import { AllyClient } from "../../../interfaces/AllyClient";
+import {Embeds} from "../../../utility/Embeds";
 
 export const SlashCommand: Command = {
     name: "help",
@@ -15,7 +24,7 @@ export const SlashCommand: Command = {
             if (!types.includes(command.moduleName)) types.push(command.moduleName);
         });
 
-        let embed = new EmbedBuilder()
+        let embed = new Embeds()
             .setTitle("Command List")
             .setDescription("Here is a list of all the commands you can use!")
             .setColor(0xAD93EE);
@@ -39,7 +48,7 @@ export const SlashCommand: Command = {
     followup(client, interaction) {
         const type = interaction.customId.split(".")[1];
 
-        let embed = new EmbedBuilder()
+        let embed = new Embeds()
             .setTitle(`${type} Commands`)
             .setDescription(`Here is a list of all the commands for the ${type} module!`)
             .setColor(0xAD93EE);

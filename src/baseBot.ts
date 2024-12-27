@@ -19,9 +19,12 @@ const client = new AllyClient({
 });
 
 client.commands = new Collection();
-client.DB = new Sequelize("sqlite::memory");
+client.DB = new Sequelize('sqlite::memory');
 
 const commandsDirectory = path.join(__dirname, "commands");
+if (!fs.existsSync(commandsDirectory)) {
+    fs.mkdirSync(commandsDirectory);
+}
 
 fs.readdir(commandsDirectory, async (err: NodeJS.ErrnoException | null, items: string[]) => {
     if (err) throw err;
@@ -43,6 +46,9 @@ fs.readdir(commandsDirectory, async (err: NodeJS.ErrnoException | null, items: s
 );
 
 const listenersDirectory = path.join(__dirname, "listeners");
+if (!fs.existsSync(listenersDirectory)) {
+    fs.mkdirSync(listenersDirectory);
+}
 
 fs.readdir(listenersDirectory, async (err: NodeJS.ErrnoException | null, items: string[]) => {
     if (err) throw err;

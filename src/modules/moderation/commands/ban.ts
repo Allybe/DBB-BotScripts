@@ -1,6 +1,5 @@
 import {
-  CommandInteraction, Embed,
-  EmbedBuilder,
+  CommandInteraction,
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";

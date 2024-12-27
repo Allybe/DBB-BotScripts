@@ -1,6 +1,5 @@
 import {
   CommandInteraction,
-  EmbedBuilder,
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
@@ -23,11 +22,8 @@ export const SlashCommand: Command = {
 
     if (time >= MAX_TIME) {
       embed
-        .setTitle("Invalid time")
-        .setDescription("You can't mute someone for more than 4 weeks")
-        .setFooter({
-          text: "This Discord bot was made with Discord Bot Builder",
-        }).setColor("Red");
+          .setTitle("Invalid time")
+          .setDescription("You can't mute someone for more than 4 weeks");
 
       return interaction.reply({
         embeds: [embed],
@@ -42,10 +38,7 @@ export const SlashCommand: Command = {
         .setTitle("Member muted")
         .setDescription(
           `${mentionedUser} was muted for ${time} minutes`
-        )
-        .setFooter({
-          text: "This Discord bot was made with Discord Bot Builder",
-        }).setColor("Green");
+        );
 
       interaction.reply({
         embeds: [embed]
