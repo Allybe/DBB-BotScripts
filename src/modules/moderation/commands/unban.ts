@@ -13,9 +13,9 @@ export const SlashCommand: Command = {
   description: "Command for unbanning server members",
   moduleName: "Moderation",
   run: (client: AllyClient, interaction: CommandInteraction) => {
-    var user = interaction.options.getUser("user");
-    var guild = interaction.guild;
-    var embed = new EmbedBuilder();
+    let user = interaction.options.get("user").user;
+    let guild = interaction.guild;
+    let embed = new EmbedBuilder();
 
     guild.bans.fetch().then((banCollection) => {
       if (!banCollection.has(user.id)) {

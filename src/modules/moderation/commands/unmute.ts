@@ -12,10 +12,10 @@ export const SlashCommand: Command = {
   description: "Unmute server members",
   moduleName: "Moderation",
   run: (client: AllyClient, interaction: CommandInteraction) => {
-    var embed = new EmbedBuilder();
+    let embed = new EmbedBuilder();
 
-    var user = interaction.options.getUser("user");
-    var guild = interaction.guild;
+    let user = interaction.options.get("user").user;
+    let guild = interaction.guild;
 
     guild.members.fetch(user).then((fetchedUser) => {
       fetchedUser.timeout(null);

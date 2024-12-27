@@ -1,32 +1,30 @@
 import {
-  CommandInteraction,
+  CommandInteraction, Embed,
   EmbedBuilder,
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
 import { AllyClient } from "../../../interfaces/AllyClient";
 import { Command } from "../../../interfaces/Commands";
+import {Embeds} from "../../../utility/Embeds";
 
 export const SlashCommand: Command = {
   name: "ban",
   description: "Command for banning server members",
   moduleName: "Moderation",
   run: (client: AllyClient, interaction: CommandInteraction) => {
-    var user = interaction.options.getUser("user");
-    var banReason = interaction.options.get("reason").value as string;
-    var guild = interaction.guild;
+    let user = interaction.options.get("user", true).user;
+    let banReason = interaction.options.get("reason").value as string;
+    let guild = interaction.guild;
 
     guild.members
       .ban(user, {
         reason: banReason,
       })
       .then(() => {
-        var embed = new EmbedBuilder()
+        let embed = new Embeds()
           .setTitle("Member banned")
-          .setDescription(`${user} was banned from ${guild.name}`)
-          .setFooter({
-            text: "This Discord bot was made with Discord Bot Builder",
-          }).setColor("Red");
+          .setDescription(`${user} was banned from ${guild.name}`);
 
         interaction.reply({ embeds: [embed] });
       });

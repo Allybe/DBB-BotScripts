@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 import { AllyClient } from "../../../interfaces/AllyClient";
 import { Command } from "../../../interfaces/Commands";
+import {Embeds} from "../../../utility/Embeds";
 const MIN_IN_MS = 60000;
 const MAX_TIME = 35791;
 
@@ -14,9 +15,9 @@ export const SlashCommand: Command = {
   description: "Mute member",
   moduleName: "Moderation",
   run: (client: AllyClient, interaction: CommandInteraction) => {
-    const embed = new EmbedBuilder();
+    const embed = new Embeds();
 
-    const mentionedUser = interaction.options.getUser("user");
+    const mentionedUser = interaction.options.get("user").user;
     const time = interaction.options.get("time", true).value as number;
     const guild = interaction.guild;
 

@@ -4,3 +4,7 @@ package-lock.json
 
 # Typescript Output
 dist/
+
+# IDEs
+.idea
+.vscode

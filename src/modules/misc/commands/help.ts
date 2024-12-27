@@ -8,14 +8,14 @@ export const SlashCommand: Command = {
     moduleName: "Misc",
     type: ApplicationCommandType.ChatInput,
     run: async (client: AllyClient, interaction: CommandInteraction) => {
-        var types = new Array<string>();
-        var row = new ActionRowBuilder<MessageActionRowComponentBuilder>();
+        let types = new Array<string>();
+        let row = new ActionRowBuilder<MessageActionRowComponentBuilder>();
 
         client.commands.each((command) => { 
             if (!types.includes(command.moduleName)) types.push(command.moduleName);
         });
 
-        var embed = new EmbedBuilder()
+        let embed = new EmbedBuilder()
             .setTitle("Command List")
             .setDescription("Here is a list of all the commands you can use!")
             .setColor(0xAD93EE);
@@ -39,7 +39,7 @@ export const SlashCommand: Command = {
     followup(client, interaction) {
         const type = interaction.customId.split(".")[1];
 
-        var embed = new EmbedBuilder()
+        let embed = new EmbedBuilder()
             .setTitle(`${type} Commands`)
             .setDescription(`Here is a list of all the commands for the ${type} module!`)
             .setColor(0xAD93EE);
