@@ -17,10 +17,10 @@ interface Config {
 }
 
 export const config: Config = {
-    token: "token",
-    prefix: "prefix",
-    applicationID: "applicationID",
-    clientID: "clientID",
+    token: process.env.BOT_TOKEN,
+    prefix: "=",
+    applicationID: process.env.APPLICATION_ID,
+    clientID: process.env.CLIENT_ID,
     botName: "botName",
     botAuthor: "botAuthor",
 

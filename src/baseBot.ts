@@ -1,5 +1,8 @@
 import { AllyClient } from "./interfaces/AllyClient.js";
 import { config } from "./config.js"; // Not ready to do this yet
+import dotenv from "dotenv";
+dotenv.config()
+
 
 import {
     GatewayIntentBits,
@@ -94,7 +97,7 @@ process.on("uncaughtException", (error) => {
     }
 });
 
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);
 
 const loadCommands = (files: string[], location: string) => {
     files.forEach((fileName) => {

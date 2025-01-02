@@ -1,42 +1,49 @@
-const { REST, Routes } = require('discord.js');
-const config = require('../dist/config.js');
-const fs = require('node:fs');
-const path = require('node:path');
+import {REST, Routes} from 'discord.js';
+import { config } from "./config.js"; // Not ready to do this yet
+import fs from 'node:fs';
+import path from 'node:path';
+import dotenv from 'dotenv';
+dotenv.config({path: path.join(__dirname, '..', '.env')});
+
 
 const commands = [];
-// Grab all the command files from the commands directory you created earlier
-const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
+const commandsDirectory = path.join(__dirname, "commands");
 
-for (const folder of commandFolders) {
-    // Grab all the command files from the commands directory you created earlier
-    const commandsPath = path.join(foldersPath, folder);
-    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-    // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
-    for (const file of commandFiles) {
-        const filePath = path.join(commandsPath, file);
-        const command = require(filePath);
-            commands.push(command.SlashCommand.command.toJSON());
+const filterNonJsFiles = (items: string[]) => {
+    return items.filter((files) => files.split(".").pop() === "js");
+};
+
+if (!fs.existsSync(commandsDirectory)) {
+    fs.mkdirSync(commandsDirectory);
+}
+
+const items = fs.readdirSync(commandsDirectory);
+const baseFiles = filterNonJsFiles(items);
+const folders = items.filter((files: string) => files.split(".").pop() != "js");
+
+for (const baseFile of baseFiles) {
+    let properties = require(path.join(commandsDirectory, baseFile));
+    commands.push(properties.SlashCommand.command.toJSON());
+}
+
+for (const folderName of folders) {
+    const folderItems = fs.readdirSync(path.join(commandsDirectory, folderName));
+    const files = filterNonJsFiles(folderItems);
+    for (const file of files) {
+        let properties = require(path.join(commandsDirectory, folderName, file));
+        commands.push(properties.SlashCommand.command.toJSON());
     }
 }
 
-// Construct and prepare an instance of the REST module
-const rest = new REST().setToken(config.config.token);
+const rest = new REST().setToken(process.env.BOT_TOKEN);
 
-// and deploy your commands!
-(async () => {
-    try {
-        console.log(`Started refreshing ${commands.length} application (/) commands.`);
-
-        // The put method is used to fully refresh all commands in the guild with the current set
-        const data = await rest.put(
-            config.config.production ? Routes.applicationCommands(config.config.clientID): Routes.applicationGuildCommands(config.config.clientID, config.config.guildID),
-            { body: commands },
-        );
-
-        console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-    } catch (error) {
-        // And of course, make sure you catch and log any errors!
-        console.error(error);
-    }
-})();
+try {
+    console.log(`Started refreshing ${commands.length} application (/) commands.`);
+    const data = rest.put(
+        Routes.applicationGuildCommands(process.env.CLIENT_ID, "926369143186403329"),
+        { body: commands },
+    );
+    console.log(`Successfully reloaded ${commands.length} application (/) commands.`);
+} catch (error) {
+    console.error(error);
+}
