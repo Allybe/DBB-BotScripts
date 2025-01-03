@@ -3,9 +3,9 @@ import {
   PermissionFlagsBits,
   SlashCommandBuilder,
 } from "discord.js";
-import { AllyClient } from "../../../interfaces/AllyClient";
-import { Command } from "../../../interfaces/Commands";
-import {Embeds} from "../../../utility/Embeds";
+import { AllyClient } from "../../interfaces/AllyClient";
+import { Command } from "../../interfaces/Commands";
+import { Embeds } from "../../utility/Embeds";
 
 export const SlashCommand: Command = {
   name: "ban",
@@ -15,6 +15,16 @@ export const SlashCommand: Command = {
     let user = interaction.options.get("user", true).user;
     let banReason = interaction.options.get("reason").value as string;
     let guild = interaction.guild;
+
+    console.log(user.bot);
+    if (user.bot) {
+      let embed = new Embeds()
+          .setTitle("Unable to ban bots")
+          .setDescription("Bots cannot be banned, only kicked.");
+
+      interaction.reply({embeds: [embed]});
+      return;
+    }
 
     guild.members
       .ban(user, {

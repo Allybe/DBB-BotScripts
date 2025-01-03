@@ -1,5 +1,5 @@
-import {Listeners} from "../../../interfaces/Listeners";
-import {AllyClient} from "../../../interfaces/AllyClient";
+import {Listeners} from "../interfaces/Listeners";
+import {AllyClient} from "../interfaces/AllyClient";
 import {Events, GuildMember, SendableChannels, TextBasedChannel} from "discord.js";
 
 export const Listener: Listeners<Events.GuildMemberAdd> = {

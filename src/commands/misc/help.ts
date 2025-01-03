@@ -7,9 +7,9 @@ import {
     ButtonStyle,
     MessageActionRowComponentBuilder
 } from "discord.js";
-import { Command } from "../../../interfaces/Commands";
-import { AllyClient } from "../../../interfaces/AllyClient";
-import {Embeds} from "../../../utility/Embeds";
+import { Command } from "../../interfaces/Commands";
+import { AllyClient } from "../../interfaces/AllyClient";
+import {Embeds} from "../../utility/Embeds";
 
 export const SlashCommand: Command = {
     name: "help",
