@@ -15,7 +15,7 @@ interface Config {
     production: boolean;
     guildID: string;
 }
-
+//
 export const config: Config = {
     token: process.env.BOT_TOKEN,
     prefix: "=",
