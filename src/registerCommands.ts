@@ -1,5 +1,5 @@
 import {REST, Routes} from 'discord.js';
-import { config } from "./config.js"; // Not ready to do this yet
+import { config } from "./config.js";
 import fs from 'node:fs';
 import path from 'node:path';
 import dotenv from 'dotenv';
