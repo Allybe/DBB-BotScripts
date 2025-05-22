@@ -8,6 +8,7 @@ export const Listener: Listeners<Events.GuildMemberAdd> = {
     run(client: AllyClient, listener: GuildMember): void {
         //TODO: Add ability to change what channel to send message to.
         const welcomeChannelId = listener.guild.systemChannelId; //Add ability to change channel to send to
+        console.log(welcomeChannelId);
         listener.guild.channels.fetch(welcomeChannelId).then((channel) => {
             if (channel.isSendable()) {
                 let welcomeChannel = channel as SendableChannels;

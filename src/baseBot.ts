@@ -1,3 +1,4 @@
+
 import { AllyClient } from "./interfaces/AllyClient.js";
 import { config } from "./config.js"; // Not ready to do this yet
 import dotenv from "dotenv";
@@ -11,10 +12,10 @@ import {
     Interaction
 } from "discord.js";
 import * as fs from "fs";
-import { Sequelize } from "sequelize";
 import {Listeners} from "./interfaces/Listeners";
 import path from "path";
 import {errorHandler} from "./utility/ErrorHandling";
+import {pathToFileURL} from "node:url";
 
 const client = new AllyClient({
   intents: config.intents as GatewayIntentBits[],
@@ -22,7 +23,7 @@ const client = new AllyClient({
 });
 
 client.commands = new Collection();
-client.DB = new Sequelize('sqlite::memory');
+//client.DB = new Sequelize('sqlite::memory');
 
 const commandsDirectory = path.join(__dirname, "commands");
 if (!fs.existsSync(commandsDirectory)) {
@@ -40,7 +41,6 @@ fs.readdir(commandsDirectory, async (err: NodeJS.ErrnoException | null, items: s
       fs.readdir(path.join(commandsDirectory, folderName), async (err: NodeJS.ErrnoException | null, subFolderItems: string[]) => {
           if (err) throw err;
           const Files = filterNonJsFiles(subFolderItems);
-
           loadCommands(Files, path.join(commandsDirectory, folderName));
         }
       );
@@ -58,7 +58,7 @@ fs.readdir(listenersDirectory, async (err: NodeJS.ErrnoException | null, items: 
     const listeners = items.filter((files) => files.split(".").pop() === "js");
 
     listeners.forEach((fileName: string) => {
-        import(path.join(listenersDirectory, fileName)).then((properties) => {
+        import(pathToFileURL(path.join(listenersDirectory, fileName)).toString()).then((properties) => {
             let listener:Listeners<any> = properties.Listener;
 
             client.on(listener.event, (args) => {
@@ -101,7 +101,7 @@ client.login(process.env.BOT_TOKEN);
 
 const loadCommands = (files: string[], location: string) => {
     files.forEach((fileName) => {
-        import(path.join(location, fileName)).then((properties) => {
+        import(pathToFileURL(path.join(location, fileName)).toString()).then((properties) => {
             let commandName = properties.SlashCommand.name.toLowerCase();
 
             client.commands.set(commandName, properties.SlashCommand);

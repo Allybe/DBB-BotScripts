@@ -25,7 +25,7 @@ export const config: Config = {
     botAuthor: "botAuthor",
 
     status: "online",
-    intents: ["Guilds"],
+    intents: ["Guilds", "GuildMembers"],
     partials: [],
     RESTVersion: "9",
     production: false,
